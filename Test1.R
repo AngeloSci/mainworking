@@ -6,3 +6,5 @@
 
   library(devtools)
   find_rtools()
+  
+  library(KernSmooth)
