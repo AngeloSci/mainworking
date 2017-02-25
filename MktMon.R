@@ -22,3 +22,5 @@ chart_Series(EURGBP)
 chart_Series(EURUSD)
 chart_Series(XAUUSD)
 chart_Series(USDJPY)
+
+
