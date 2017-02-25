@@ -2,9 +2,13 @@ library(quantmod)
 library(xlsx)
 library(ggplot2)
 
+rm(list = ls())
 
-getFX(c("EUR/GBP","EUR/USD","USD/JPY"),from="2015-07-01")
-getFX("XAU/USD",from="2015-07-01")
+today <- "2017-02-25"
+prvdate <- as.character(as.Date(today)-30)
+
+getFX(c("EUR/GBP","EUR/USD","USD/JPY"),from=prvdate)
+getFX("XAU/USD",from=prvdate)
 
 #plotting EURGBP with ggplot2
 tmpData = data.frame(dates = index(EURGBP),EURGBP,EURUSD)
