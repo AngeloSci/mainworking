@@ -5,12 +5,18 @@ library(ggplot2)
 rm(list = ls())
 
 # ------------------------------- INPUTS -----------------------------------------------
+# General & Market Data
 today <- "2017-02-25"
 dayslag <- 360*5
 main_loc <- "D:/GithubLocal/mainworking/"
 filenm <- "pos_data.csv"
 mkt_sym = c("EUR/GBP","EUR/USD","USD/JPY","XAU/USD","USD/CHF")
 
+# Simulation
+rep_ccy <- "GBP"
+sim_st <- as.character(as.Date(today)-dayslag)
+sim_e <- today
+value <- today
 # ------------------------------- DATA LOADING -----------------------------------------------
 prvdate <- as.character(as.Date(today)-dayslag)
 pos_loc <- paste(main_loc,filenm, sep="")
@@ -47,5 +53,6 @@ for (ii in 1:length(instr)){
 }
 rm(mkt_list)
 
+# ------------------------------- SIMULATION -----------------------------------------------
 
 
