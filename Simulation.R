@@ -4,13 +4,15 @@ library(ggplot2)
 
 rm(list = ls())
 
+
 # ------------------------------- INPUTS -----------------------------------------------
 # General & Market Data
-today <- "2017-02-25"
+today <- "2017-02-23"
 dayslag <- 360*5
 main_loc <- "D:/GithubLocal/mainworking/"
 filenm <- "pos_data.csv"
 mkt_sym = c("EUR/GBP","EUR/USD","USD/JPY","XAU/USD","USD/CHF")
+source(paste(main_loc,"Functions.R",sep = ""))
 
 # Simulation
 rep_ccy <- "GBP"
@@ -55,4 +57,4 @@ rm(mkt_list)
 
 # ------------------------------- SIMULATION -----------------------------------------------
 
-
+fx_crate = fx_rate("EUR","GBP",today,mkt_data=mkt_data)
