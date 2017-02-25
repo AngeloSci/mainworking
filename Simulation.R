@@ -4,20 +4,24 @@ library(ggplot2)
 
 rm(list = ls())
 
+# ------------------------------- INPUTS -----------------------------------------------
 today <- "2017-02-25"
 dayslag <- 360*5
 main_loc <- "D:/GithubLocal/mainworking/"
 filenm <- "pos_data.csv"
 mkt_sym = c("EUR/GBP","EUR/USD","USD/JPY","XAU/USD","USD/CHF")
 
+# ------------------------------- DATA LOADING -----------------------------------------------
 prvdate <- as.character(as.Date(today)-dayslag)
 pos_loc <- paste(main_loc,filenm, sep="")
 
 pos_data <- data.frame(read.table(pos_loc, header = TRUE, sep = ","))
 
-
 instr <- getFX(mkt_sym,from=prvdate)
 
+# ------------------------------- DATA HANDLING AND MANIPULATION -----------------------------------------------
+
+# Storing all market data in a list as data frames
 mkt_list <- list()
 
 for (ii in 1:length(mkt_sym)){
@@ -25,6 +29,8 @@ for (ii in 1:length(mkt_sym)){
   mkt_list[[ii]] <- data.frame(dates = index(mkt_list[[ii]]),mkt_list[[ii]])
 }
 
+
+# Creating a data frame with synchronous data
 mkt_data <- data.frame(mkt_list[[1]])
 row.names(mkt_data) <- NULL
 
@@ -34,10 +40,12 @@ for (ii in 3:(length(mkt_sym)+1)){
 
 colnames(mkt_data) <-c("dates",gsub("/","",mkt_sym))
 
+
+# Cleaning workspace
 for (ii in 1:length(instr)){
   rm(list = instr[[ii]])
 }
-
+rm(mkt_list)
 
 
 
