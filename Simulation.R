@@ -58,3 +58,4 @@ rm(mkt_list)
 # ------------------------------- SIMULATION -----------------------------------------------
 
 fx_crate = fx_rate("EUR","GBP",today,mkt_data=mkt_data)
+
