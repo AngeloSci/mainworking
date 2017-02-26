@@ -59,3 +59,4 @@ rm(mkt_list)
 
 fx_crate = fx_rate("EUR","GBP",today,mkt_data=mkt_data)
 
+pos_data[,4] <- fx_rate(pos_data[,3],rep_ccy,today,mkt_data=mkt_data)
