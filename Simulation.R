@@ -24,6 +24,7 @@ prvdate <- as.character(as.Date(today)-dayslag)
 pos_loc <- paste(main_loc,filenm, sep="")
 
 pos_data <- data.frame(read.table(pos_loc, header = TRUE, sep = ","))
+colnames(pos_data)[1] <- "Instrument"
 
 instr <- getFX(mkt_sym,from=prvdate)
 
@@ -60,4 +61,4 @@ rm(mkt_list)
 fx_crate = fx_rate("EUR","GBP",today,mkt_data=mkt_data)
 
 pos_data[,4] <- fx_rate(pos_data[,3],rep_ccy,today,mkt_data=mkt_data)
-#please rename col as ccyrep
+colnames(pos_data)[4] <- paste("CCY",rep_ccy,sep="")
