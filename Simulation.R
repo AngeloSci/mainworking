@@ -19,6 +19,7 @@ rep_ccy <- "GBP"
 sim_st <- as.character(as.Date(today)-dayslag)
 sim_e <- today
 value <- today
+simlen <- 5000
 # ------------------------------- DATA LOADING -----------------------------------------------
 prvdate <- as.character(as.Date(today)-dayslag)
 pos_loc <- paste(main_loc,filenm, sep="")
@@ -62,3 +63,9 @@ fx_crate = fx_rate("EUR","GBP",today,mkt_data=mkt_data)
 
 pos_data[,4] <- fx_rate(pos_data[,3],rep_ccy,today,mkt_data=mkt_data)
 colnames(pos_data)[4] <- paste("CCY",rep_ccy,sep="")
+
+mkt_ret <- log(mkt_data[2:nrow(mkt_data),2:ncol(mkt_data)])-log(mkt_data[1:nrow(mkt_data)-1,2:ncol(mkt_data)])
+mkt_ret <- mkt_ret *100
+unifextr <- runif(simlen,min=1, max = nrow(mkt_data))
+
+test <- mkt_data[unifextr,]
